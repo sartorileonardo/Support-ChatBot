@@ -1,0 +1,29 @@
+/*
+Autor: Leonardo Sartori
+Compatível com o SGBD: MySQL v8.0.15
+*/
+
+-- CRIA O BANCO DE DADOS;
+CREATE DATABASE IF NOT EXISTS chatbot_db;
+
+-- CONFIGURA O DATABASE COMO PADRAO;
+USE chatbot_db;
+
+-- CRIA A TABELA DE PERGUNTAS;
+CREATE TABLE IF NOT EXISTS perguntas(
+codigo INT NOT NULL AUTO_INCREMENT,
+descricao VARCHAR(255) NOT NULL,
+
+PRIMARY KEY(codigo)
+);
+
+CREATE TABLE IF NOT EXISTS respostas(
+codigo INT NOT NULL AUTO_INCREMENT,
+descricao VARCHAR(255) NOT NULL,
+codPergunta INT NOT NULL,
+
+PRIMARY KEY(codigo),
+FOREIGN KEY (codPergunta) REFERENCES perguntas(codigo)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+)
