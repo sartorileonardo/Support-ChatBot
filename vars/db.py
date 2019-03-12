@@ -3,6 +3,14 @@ import sqlite3
 
 DBNAME='db.sqlite'
 
+#Exemplo de Uso
+#
+#import db
+#
+#rsp = db.Respostas()
+#res=rsp.filters('teste')
+
+
 class Connect(object):
 
     def __init__(self, db_name):
@@ -25,7 +33,7 @@ class Connect(object):
             print("Conexão fechada.")
 
 
-class Perguntas(object):
+class Perguntas:
 
     tb_name = 'perguntas'
 
@@ -33,14 +41,14 @@ class Perguntas(object):
         self.db = Connect(DBNAME)
         self.tb_name
 
-    def filters(self):
-        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name)
+    def filters(self,pesquisa=''):
+        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name+' WHERE  descricao LIKE  "%'+pesquisa+'%"' )
         return r
 
     def fechar_conexao(self):
         self.db.close_db()
         
-  class Respostas(object):
+class Respostas:
 
     tb_name = 'respostas'
 
@@ -48,8 +56,8 @@ class Perguntas(object):
         self.db = Connect(DBNAME)
         self.tb_name
 
-    def filters(self):
-        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name)
+    def filters(self,pesquisa=''):
+        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name+' WHERE  descricao LIKE  "%'+pesquisa+'%"' )
         return r
 
     def fechar_conexao(self):
