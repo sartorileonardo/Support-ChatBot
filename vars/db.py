@@ -1,3 +1,6 @@
+
+#Autor: Fabio Alberti
+#Contact: fabiocax@gmail.com
 import os
 import sqlite3
 
