@@ -1,3 +1,6 @@
+#Autor: Fabio Alberti
+#Contact: fabiocax@gmail.com
+
 from flask import Flask, render_template, request, jsonify
 import os
 
