@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>ChatBot</title>
+
+    <style>
+        .mensagem-caixa {
+            margin: 10px 5px;
+            border-radius: 8px;
+            background: white;
+            padding: 10px;
+        }
+
+        .mensagem-recebida {
+            text-align: left;
+        }
+
+        .mensagem-enviada {
+            text-align: right;
+            background: rgb(135, 201, 158);
+        }
+
+        .container-mensagens {
+            height: 70vh;
+            background: lightgray;
+            overflow-y: scroll;
+            margin-top: 5px;
+            border-radius: 8px
+        }
+
+        .container-input {
+            background: lightgray;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        .title {
+            background: #004417;
+            color: white;
+            padding: 15px;
+            font-weight: bold
+        }
+    </style>
+</head>
+
+<body style="background: gray">
+    <div class="container-fluid">
+        <div class="row title">
+            ChatBot
+        </div>
+    </div>
+
+    <div class="container container-mensagens"></div>
+
+    <div class="container container-input">
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" id="mensagem">
+            </div>
+
+            <button class="btn btn-dark" onclick="enviarMensagem()">Enviar</button>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $(document).keypress(function (e) {
+                if (e.which == 13) {
+                    enviarMensagem();
+                }
+            });
+        });
+
+        let request = {
+            async: true,
+            url: "http://ip.jsontest.com/",
+            // url: "http://dc.shoto.com.br:8089/ask",            
+            type: "POST",
+            mode: 'cors',
+            crossDomain: true,
+            crossOrigin: true,
+            dataType: "text",
+            success: function () { console.log("Comunicação OK."); },
+            error: function () { console.log("Erro na comunicação") },
+            data: {user: "leonardo", apikey: "432ref4824ijio4343233243243==",messageText: "O que é quântico"}
+        }        
+
+        let adicionarMensagem = function (enviadaOuRecebida, mensagem) {
+            $(".container.container-mensagens").append('<div class="mensagem-caixa mensagem-' + enviadaOuRecebida + '">' + mensagem + '</div>')
+        }
+
+        let adicionarMensagemEnviada = function (mensagem) {
+            adicionarMensagem("enviada", mensagem)
+            $("#mensagem").val("")
+        }
+
+        let adicionarMensagemRecebida = function (response) {
+            let mensagem = JSON.parse(response).ip
+            adicionarMensagem("recebida", mensagem)
+        }
+
+        let enviarMensagem = function () {
+            let mensagem = $("#mensagem").val()
+            if (mensagem) {
+                adicionarMensagemEnviada(mensagem)
+                $.ajax(request).done(function (response) { adicionarMensagemRecebida(response) });
+            }
+        }
+
+    </script>
+</body>
+
+</html>
