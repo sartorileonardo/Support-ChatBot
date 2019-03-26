@@ -5,6 +5,8 @@
 #Autor: Leonardo Sartori
 #Contact: leonardogt4@hotmail.com
 
+from spreadsheets import spreadsheet
+sheet = spreadsheet()
 '''
 #Sample AIML with normal question:
 <aiml version="1.0.1" encoding="UTF-8">
@@ -81,17 +83,22 @@ def open_random_tag(listTextResponses):
 def close_random_tag():
     file.write("\t\t</random>\n")
 
-def add_question_default(textQuestion, textResponse):
+def add_questions_default(listQuestion, listResponse):
     open_aiml_tag()
     open_category_tag()
-    open_pattern_tag(textQuestion)
-    close_pattern_tag()
-    open_template_tag(textResponse)
-    close_template_tag()
+    for line in listQuestion:
+        print(line)
+        open_pattern_tag(line)
+        close_pattern_tag()
+
+    for line in listResponse:
+        print(line)
+        open_template_tag(line)
+        close_template_tag()
     close_category_tag()
     close_amil_tag()
 
-def add_question_random(textQuestion, listTextResponses):
+def add_questions_random(textQuestion, listTextResponses):
     open_aiml_tag()
     open_category_tag()
     open_pattern_tag(textQuestion)
@@ -110,6 +117,8 @@ def close_file():
 #Test
 #open_file()
 
-add_question_default('Teste pergunta', 'Teste resposta')
+add_questions_default(sheet.read_col(1), sheet.read_col(2))
 
+#Obs: To test add sheet in same directory
+#TODO: Align question with responses in aiml out.
 #TODO: Convert file.write commands in only one string with contacts
