@@ -26,7 +26,6 @@ sheet = spreadsheet()
     </category>
     
 </aiml>
-
 #Sample AIML with random question:
 <?xml version = "1.0" encoding = "UTF-8"?>
 <aiml version = "1.0.1" encoding ="UTF-8"?>
@@ -42,23 +41,21 @@ sheet = spreadsheet()
       
    <category>      
 </aiml>
-
 '''
 
 #def open_file():
 file = open("support.aiml", "w")
 
 def open_aiml_tag():
-    file.write("<aiml version=\"1.0.1\" encoding=\"UTF-8\">\n")
+    file.write("<?xml version = \"1.0\" encoding=\"UTF-8\"?>")
+    file.write("\n<aiml version=\"1.0.1\" encoding=\"UTF-8\">\n")
 
 def close_amil_tag():
     file.write("</aiml>")
 
-def open_pattern_tag(question_message):
+def write_pattern_tag(question_message):
     file.write("\t\t<pattern>\n")
     file.write("\t\t\t"+question_message+"\n")
-    
-def close_pattern_tag():
     file.write("\t\t</pattern>\n")
 
 def open_category_tag():
@@ -67,48 +64,25 @@ def open_category_tag():
 def close_category_tag():
     file.write("\t</category>\n")
 
-def open_template_tag(responseMessage):
+def write_template_tag(responseMessage):
     file.write("\t\t<template>\n")
     file.write("\t\t\t"+responseMessage+"\n")
-
-def close_template_tag():
     file.write("\t\t</template>\n")
 
-def open_random_tag(listTextResponses):
-    file.write("\t\t<random>\n")
-    for i in len(listTextResponses):
-        file.write("\t\t\t<li>\n" + str(i) + "\t\t\t</li>\n")
-    
-
-def close_random_tag():
-    file.write("\t\t</random>\n")
-
 def add_questions_default(listQuestion, listResponse):
-    open_aiml_tag()
-    open_category_tag()
-    for line in listQuestion:
-        print(line)
-        open_pattern_tag(line)
-        close_pattern_tag()
+    #open_aiml_tag()
+    #open_category_tag()
+    for lineQuestion in listQuestion:
+        #write_pattern_tag(lineQuestion)
+        print(lineQuestion)  
+        for lineResponse in listResponse:
+            
+            print(lineResponse) 
+            #write_template_tag(lineResponse)    
+            
+    #close_category_tag()
+    #close_amil_tag()
 
-    for line in listResponse:
-        print(line)
-        open_template_tag(line)
-        close_template_tag()
-    close_category_tag()
-    close_amil_tag()
-
-def add_questions_random(textQuestion, listTextResponses):
-    open_aiml_tag()
-    open_category_tag()
-    open_pattern_tag(textQuestion)
-    close_pattern_tag()
-    open_random_tag();
-    close_random_tag(listTextResponses);
-    open_template_tag(textResponse)
-    close_template_tag()
-    close_category_tag()
-    close_amil_tag()
     
 def close_file():
     # Close opend file
@@ -117,7 +91,11 @@ def close_file():
 #Test
 #open_file()
 
-add_questions_default(sheet.read_col(1), sheet.read_col(2))
+list1 = ['Pergunta 1', 'Pergunta 2']
+list2 = ['Resposta 1', 'Resposta 2']
+
+#add_questions_default(sheet.read_col(1), sheet.read_col(2))
+add_questions_default(list1, list2)
 
 #Obs: To test add sheet in same directory
 #TODO: Align question with responses in aiml out.
