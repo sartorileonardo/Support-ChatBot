@@ -8,4 +8,7 @@ CREATE TABLE IF NOT EXISTS `perguntas` (
 	`codigo`	INTEGER PRIMARY KEY AUTOINCREMENT,
 	`descricao`	TEXT
 );
+
 COMMIT;
+
+

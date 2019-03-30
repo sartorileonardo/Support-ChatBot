@@ -1,7 +1,10 @@
+
+#Autor: Fabio Alberti
+#Contact: fabiocax@gmail.com
 import os
 import sqlite3
 
-DBNAME='db.sqlite'
+DBNAME='var/db.sqlite'
 
 #Exemplo de Uso
 #
@@ -30,7 +33,7 @@ class Connect(object):
     def close_db(self):
         if self.conn:
             self.conn.close()
-            print("Conexão fechada.")
+            print("Conexao fechada.")
 
 
 class Perguntas:
