@@ -1,8 +1,6 @@
-# Support-ChatBot-Python
+## Support-ChatBot-Python
 
-
-Instalação:
-
+# Instalação 
 ```
 $ python3 -m venv Support-ChatBot
 $ cd Support-ChatBot/
@@ -12,33 +10,25 @@ $ cd Support-ChatBot
 $ pip3 install -r requirements.txt 
 
 ```
+# Executar
+```
+$ ./ws.py
+```
+Acessar o navegador: http://127.0.0.1:8089/
 
-
-
+# Estruturação das pastas
 ```
 ├── aiml_build
-│   └── aiml_build.py
-├── etc
+├── etc                 # Diretorio de configurações
 │   └── db.sqlite.sql
-├── front-end web
+├── modules             # Diretorio de modulos gerais
+├── README.md 
+├── requirements.txt    # Depedencias Python
+├── templates           # Paginas html
 │   └── index.html
-├── input
-│   └── spreadsheets.py
-├── modules
-│   ├── aiml_build.py
-│   ├── db.py
-│   ├── db.pyc
-│   ├── db.sqlite.sql
-│   └── spreadsheets.py
-├── README.md
-├── requirements.txt
-├── templates
-│   └── index.html
-├── vars
+├── vars                # Banco de dados
 │   └── db.sqlite
-├── web
-│   └── ws.py
-└── ws.py
+└── ws.py               # Executavel principal
 
 ```
 
