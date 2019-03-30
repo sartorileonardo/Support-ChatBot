@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 #Autor: Fabio Alberti
 #Contact: fabiocax@gmail.com
 
