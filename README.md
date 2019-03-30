@@ -18,7 +18,6 @@ Acessar o navegador: http://127.0.0.1:8089/
 
 # Estruturação das pastas
 ```
-├── aiml_build
 ├── etc                 # Diretorio de configurações
 │   └── db.sqlite.sql
 ├── modules             # Diretorio de modulos gerais
