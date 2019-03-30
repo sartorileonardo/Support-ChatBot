@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 
@@ -84,19 +85,17 @@
             });
         });
 
-        let request = {
+        let comunicacao = function (mensagem) {
+            return {
             async: true,
-            //url: "http://ip.jsontest.com/",
             url: "/ask",            
             type: "POST",
-            mode: 'cors',
-            crossDomain: true,
-            crossOrigin: true,
             dataType: "text",
             success: function () { console.log("Comunicação OK."); },
             error: function () { console.log("Erro na comunicação") },
-            data: {user: "leonardo", apikey: "432ref4824ijio4343233243243==",messageText: "O que é quântico"}
-        }        
+            data: {user: "leonardo", apikey: "432ref4824ijio4343233243243==",messageText: mensagem}
+            }
+        }         
 
         let adicionarMensagem = function (enviadaOuRecebida, mensagem) {
             $(".container.container-mensagens").append('<div class="mensagem-caixa mensagem-' + enviadaOuRecebida + '">' + mensagem + '</div>')
@@ -108,13 +107,14 @@
         }
 
         let adicionarMensagemRecebida = function (response) {
-            let mensagem = JSON.parse(response).ip
+            let mensagem = JSON.parse(response).answer
             adicionarMensagem("recebida", mensagem)
         }
 
         let enviarMensagem = function () {
             let mensagem = $("#mensagem").val()
             if (mensagem) {
+                let request = comunicacao(mensagem)
                 adicionarMensagemEnviada(mensagem)
                 $.ajax(request).done(function (response) { adicionarMensagemRecebida(response) });
             }
