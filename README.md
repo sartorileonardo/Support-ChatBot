@@ -15,8 +15,7 @@ $ pip3 install -r requirements.txt
 
 
 
-
-.
+```
 ├── aiml_build
 │   └── aiml_build.py
 ├── etc
@@ -40,5 +39,7 @@ $ pip3 install -r requirements.txt
 ├── web
 │   └── ws.py
 └── ws.py
+
+```
 
 
