@@ -15,7 +15,7 @@ Importante: Toda vez que sair do shell, deve-se executar o source para ativar o 
 ```source bin/activate``` dentro do  ChatBot/.
 
 ```
-$ ./ws.py
+$ python3 ws.py
 ```
 Acessar o navegador: http://127.0.0.1:8089/
 
