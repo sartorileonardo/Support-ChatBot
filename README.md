@@ -2,8 +2,8 @@
 
 # Instalação 
 ```
-$ python3 -m venv Support-ChatBot
-$ cd Support-ChatBot/
+$ python3 -m venv ChatBot
+$ cd ChatBot/
 $ source bin/activate
 $ git clone https://github.com/leonardogt4/Support-ChatBot.git
 $ cd Support-ChatBot
@@ -12,7 +12,7 @@ $ pip3 install -r requirements.txt
 ```
 # Executar
 Importante: Toda vez que sair do shell, deve-se executar o source para ativar o virtualenv: 
-```source bin/activate``` dentro do  Support-ChatBot/.
+```source bin/activate``` dentro do  ChatBot/.
 
 ```
 $ ./ws.py
