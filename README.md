@@ -1,6 +1,6 @@
-## Support-ChatBot-Python
+# Support-ChatBot-Python
 
-# Instalação 
+## Instalação 
 ```
 $ python3 -m venv ChatBot
 $ cd ChatBot/
@@ -10,7 +10,7 @@ $ cd Support-ChatBot
 $ pip3 install -r requirements.txt 
 
 ```
-# Executar
+## Executar
 Importante: Toda vez que sair do shell, deve-se executar o source para ativar o virtualenv: 
 ```source bin/activate``` dentro do  ChatBot/.
 
@@ -19,7 +19,7 @@ $ ./ws.py
 ```
 Acessar o navegador: http://127.0.0.1:8089/
 
-# Estruturação das pastas
+## Estruturação das pastas
 ```
 .
 └── ChatBot
@@ -39,3 +39,4 @@ Acessar o navegador: http://127.0.0.1:8089/
 ```
 
 
+## 
