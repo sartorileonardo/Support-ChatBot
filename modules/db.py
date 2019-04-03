@@ -1,3 +1,27 @@
+## Exemplos
+
+###Inserir
+
+# session =Create_session()
+# teste = Perguntas("Python","egal","teste ","fabio")
+# session.add(teste)
+# session.commit()
+
+##Pesquisar
+
+# session =Create_session()
+# for pergunta in session.query(Perguntas).order_by(Perguntas.id):
+#     print (pergunta.pergunta, pergunta.resposta)
+
+# Remover
+#remove=session.query(Perguntas).filter_by(user='fabio').first()
+#session.delete(remove)
+
+
+#Objeto
+# session.query(Perguntas).filter_by(user='fabio').first()
+
+
 from sqlalchemy import *
 from sqlalchemy import create_engine, ForeignKey
 from sqlalchemy import Column, Date, Integer, String
@@ -26,34 +50,8 @@ class Perguntas(Base):
         self.descricao = descricao
         self.user = user
 
-
-
-
-
-
-
 def Create_session():
 	Session = sessionmaker(bind=engine)
 	return Session()
 
  
-###Inserir
-
-# session =Create_session()
-# teste = Perguntas("Python","egal","teste ","fabio")
-# session.add(teste)
-# session.commit()
-
-##Pesquisar
-
-# session =Create_session()
-# for pergunta in session.query(Perguntas).order_by(Perguntas.id):
-#     print (pergunta.pergunta, pergunta.resposta)
-
-# Remover
-#remove=session.query(Perguntas).filter_by(user='fabio').first()
-#session.delete(remove)
-
-
-#Objeto
-# session.query(Perguntas).filter_by(user='fabio').first()
