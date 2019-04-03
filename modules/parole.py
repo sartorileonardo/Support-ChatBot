@@ -1,7 +1,7 @@
 
 import bot as corpus
-from db import *
-session =Create_session()
+#from db import *
+#session =Create_session()
 
 class Parole():
 	def __init__(self):		
@@ -10,7 +10,6 @@ class Parole():
 	def Response(self,message,user):
 		# Aqui entram os modulos de inteligencia nas respostas
 
-		print(session.query(Perguntas).filter_by(user='fabio').first().id)
 		self.user=user.decode('utf-8')
 		self.resposta=corpus.parole(message).replace("{{user}}",self.user)	
 		# termina 
