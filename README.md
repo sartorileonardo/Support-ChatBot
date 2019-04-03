@@ -29,13 +29,13 @@ Acessar o navegador: http://127.0.0.1:8089/
             │   └── db.sqlite.sql
             ├── modules             # Diretorio de modulos gerais
             │    └── parole.py      # Classe  principal de resposta.
-            │    └── models.py          # ORM de base de acesso ao banco de dados. 
+            │    └── models.py      # ORM de base de acesso ao banco de dados. 
             ├── README.md 
             ├── requirements.txt    # Depedencias Python
             ├── templates           # Paginas html
             │   └── index.html
             ├── vars                # Banco de dados
-            │   └── db.sqlite
+            │   └── chat.sqlite
             └── ws.py               # Executavel principal
 
 ```
