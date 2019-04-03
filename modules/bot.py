@@ -13,9 +13,9 @@ language='portuguese'
 f=open('vars/chatbot.txt','r',errors = 'ignore')
 raw=f.read()
 raw=raw.lower()# converts to lowercase
-# nltk.download('punkt')
-# nltk.download('rslp')
-# nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('rslp')
+nltk.download('stopwords')
 
 sent_tokens = nltk.sent_tokenize(raw, language=language)
 word_tokens = nltk.word_tokenize(raw, language=language)
