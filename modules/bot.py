@@ -46,7 +46,7 @@ def LemNormalize(text):
     return LemTokens(nltk.word_tokenize(text.lower().translate(remove_punct_dict)))
 
 GREETING_INPUTS = ("ola", "oi", "saudações", "sup", "tudo bem","hey")
-GREETING_RESPONSES = ["oi", "ei", "* acena com a cabeça *", "oi, em que posso ajudar?", "olá", "estou feliz! você está falando comigo"]
+GREETING_RESPONSES = [ "oi {{user}}, em que posso ajudar?"]
 
 
 def greeting(sentence):

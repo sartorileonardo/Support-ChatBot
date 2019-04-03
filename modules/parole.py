@@ -7,10 +7,13 @@ class Parole():
 
 	def Response(self,message,user):
 		# Aqui entram os modulos de inteligencia nas respostas 
-		self.user=user
-		self.message=bot.parole(message)	
+		self.user=user.decode('utf-8')
+		print (self.user)
+		self.resposta=bot.parole(message).replace("{{user}}",self.user)	
 
 		# termina 
-		return self.message
+		return self.resposta
+
+
 
 
