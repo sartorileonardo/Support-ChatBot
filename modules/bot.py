@@ -13,6 +13,9 @@ language='portuguese'
 f=open('vars/chatbot.txt','r',errors = 'ignore')
 raw=f.read()
 raw=raw.lower()# converts to lowercase
+nltk.download('punkt')
+nltk.download('rslp')
+nltk.download('stopwords')
 
 #nltk.download('punkt') # first-time use only
 #nltk.download('wordnet') # first-time use only
