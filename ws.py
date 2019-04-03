@@ -26,4 +26,4 @@ def ask():
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=8089, debug=False)
+    app.run(host='0.0.0.0', port=8089)

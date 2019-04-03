@@ -1,68 +1,59 @@
+from sqlalchemy import *
+from sqlalchemy import create_engine, ForeignKey
+from sqlalchemy import Column, Date, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship, backref
+import datetime
+from sqlalchemy.orm import sessionmaker
+ 
+engine = create_engine('sqlite:///vars/chat.sqlite', echo=False)
+Base = declarative_base()
 
-#Autor: Fabio Alberti
-#Contact: fabiocax@gmail.com
-import os
-import sqlite3
+class Perguntas(Base):
 
-DBNAME='var/db.sqlite'
-
-#Exemplo de Uso
-#
-#import db
-#
-#rsp = db.Respostas()
-#res=rsp.filters('teste')
-
-
-class Connect(object):
-
-    def __init__(self, db_name):
-        try:
-            # conectando...
-            self.conn = sqlite3.connect(db_name)
-            self.cursor = self.conn.cursor()
-            
-        except sqlite3.Error:
-            print("Erro ao abrir banco.")
-            return False
-
-    def commit_db(self):
-        if self.conn:
-            self.conn.commit()
-
-    def close_db(self):
-        if self.conn:
-            self.conn.close()
-            print("Conexao fechada.")
+    __tablename__ = "perguntas"
+ 
+    id = Column(Integer, primary_key=True)
+    pergunta = Column(String)
+    resposta = Column(String)
+    descricao = Column(String)
+    user = Column(String)
+ 
+    def __init__(self, pergunta, resposta,descricao,user ):
+        """"""
+        self.pergunta = pergunta
+        self.resposta = resposta
+        self.descricao = descricao
+        self.user = user
 
 
-class Perguntas:
 
-    tb_name = 'perguntas'
 
-    def __init__(self):
-        self.db = Connect(DBNAME)
-        self.tb_name
 
-    def filters(self,pesquisa=''):
-        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name+' WHERE  descricao LIKE  "%'+pesquisa+'%"' )
-        return r
 
-    def fechar_conexao(self):
-        self.db.close_db()
-        
-class Respostas:
 
-    tb_name = 'respostas'
+def Create_session():
+	Session = sessionmaker(bind=engine)
+	return Session()
 
-    def __init__(self):
-        self.db = Connect(DBNAME)
-        self.tb_name
+ 
+###Inserir
 
-    def filters(self,pesquisa=''):
-        r = self.db.cursor.execute('SELECT * FROM '+self.tb_name+' WHERE  descricao LIKE  "%'+pesquisa+'%"' )
-        return r
+# session =Create_session()
+# teste = Perguntas("Python","egal","teste ","fabio")
+# session.add(teste)
+# session.commit()
 
-    def fechar_conexao(self):
-        self.db.close_db()
+##Pesquisar
 
+# session =Create_session()
+# for pergunta in session.query(Perguntas).order_by(Perguntas.id):
+#     print (pergunta.pergunta, pergunta.resposta)
+
+# Remover
+#remove=session.query(Perguntas).filter_by(user='fabio').first()
+#session.delete(remove)
+
+
+#Objeto
+# session.query(Perguntas).filter_by(user='fabio').first()

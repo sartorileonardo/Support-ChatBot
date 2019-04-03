@@ -13,29 +13,19 @@ language='portuguese'
 f=open('vars/chatbot.txt','r',errors = 'ignore')
 raw=f.read()
 raw=raw.lower()# converts to lowercase
-nltk.download('punkt')
-nltk.download('rslp')
-nltk.download('stopwords')
-
-#nltk.download('punkt') # first-time use only
-#nltk.download('wordnet') # first-time use only
-#nltk.download('averaged_perceptron_tagger')
-#nltk.download('floresta')
-#nltk.download('mac_morpho')
-#nltk.download('machado')
-#nltk.download('punkt')
-#nltk.download('stopwords')
-#nltk.download('wordnet')
-#nltk.download('words')
+# nltk.download('punkt')
+# nltk.download('rslp')
+# nltk.download('stopwords')
 
 sent_tokens = nltk.sent_tokenize(raw, language=language)
 word_tokens = nltk.word_tokenize(raw, language=language)
 #sent_tokens[:2]
 #word_tokens[:5]
 
-#lemmer = nltk.stem.WordNetLemmatizer()
-lemmer = nltk.stem.RSLPStemmer()
+
 def LemTokens(tokens):
+    #lemmer = nltk.stem.WordNetLemmatizer()
+    lemmer = nltk.stem.RSLPStemmer()
 #    return [lemmer.lemmatize(token) for token in tokens]
     return [lemmer.stem(token) for token in tokens]
 
@@ -45,11 +35,13 @@ remove_punct_dict = dict((ord(punct), None) for punct in string.punctuation)
 def LemNormalize(text):
     return LemTokens(nltk.word_tokenize(text.lower().translate(remove_punct_dict)))
 
-GREETING_INPUTS = ("ola", "oi", "saudações", "sup", "tudo bem","hey")
-GREETING_RESPONSES = [ "oi {{user}}, em que posso ajudar?"]
+
 
 
 def greeting(sentence):
+    GREETING_INPUTS = ("ola", "oi", "saudações", "sup", "tudo bem","hey")
+    GREETING_RESPONSES = [ "oi {{user}}, em que posso ajudar?"]
+
     for word in sentence.lower().split():
         if word.decode('utf-8').lower() in GREETING_INPUTS:
             return random.choice(GREETING_RESPONSES)
