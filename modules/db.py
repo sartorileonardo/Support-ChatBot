@@ -49,8 +49,8 @@ class Perguntas(Base):
         self.descricao = descricao
         self.user = user
 
-def create_database():
-	Base.metadata.create_all(engine)
+#def create_database():
+Base.metadata.create_all(engine)
 
 
 def Create_session():
