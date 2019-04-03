@@ -44,11 +44,14 @@ class Perguntas(Base):
     user = Column(String)
  
     def __init__(self, pergunta, resposta,descricao,user ):
-        """"""
         self.pergunta = pergunta
         self.resposta = resposta
         self.descricao = descricao
         self.user = user
+
+def create_database():
+	Base.metadata.create_all(engine)
+
 
 def Create_session():
 	Session = sessionmaker(bind=engine)
