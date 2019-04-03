@@ -5,9 +5,11 @@ class Parole():
 
 	def Response(self,message,user):
 		# Aqui entram os modulos de inteligencia nas respostas 
-		message=message
 		self.user=user
+		self.message=message
+		
+
 		# termina 
-		return message
+		return self.message
 
 

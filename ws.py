@@ -5,10 +5,7 @@
 from flask import Flask, render_template, request, jsonify
 import os,sys
 sys.path.append('modules/')
-
 from parole import Parole
-
-
 
 app = Flask(__name__)
 
@@ -28,7 +25,5 @@ def ask():
         return jsonify({'status':'OK','user':user.decode('utf-8'),'answer':resposta.decode('utf-8')})
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
-
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8089, debug=False)
