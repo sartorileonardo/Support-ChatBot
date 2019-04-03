@@ -6,7 +6,8 @@ from flask import Flask, render_template, request, jsonify
 import os,sys
 sys.path.append('modules/')
 
-import db
+from parole import Parole
+
 
 
 app = Flask(__name__)
@@ -23,10 +24,7 @@ def ask():
     user = request.form['user'].encode('utf-8').strip() 
     message = request.form['messageText'].encode('utf-8').strip()
     if apikey.count(pkid.decode('utf-8')):        
-        # Aqui entram os modulos de inteligencia nas respostas 
-        resposta=message
-        print(message)
-        ##
+        resposta=Parole().Response(message,user)
         return jsonify({'status':'OK','user':user.decode('utf-8'),'answer':resposta.decode('utf-8')})
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
