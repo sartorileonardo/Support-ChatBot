@@ -22,7 +22,7 @@ def ask():
     message = request.form['messageText'].encode('utf-8').strip()
     if apikey.count(pkid.decode('utf-8')):        
         resposta=Parole().Response(message,user)
-        return jsonify({'status':'OK','user':user.decode('utf-8'),'answer':resposta.decode('utf-8')})
+        return jsonify({'status':'OK','user':user.decode('utf-8'),'answer':resposta})
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
 if __name__ == "__main__":
