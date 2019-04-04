@@ -1,4 +1,14 @@
-# Support-ChatBot-Python
+# Descrição
+
+Este projeto trata do desenvolvimento de um projeto open source do tipo ChatBot que tem como objetivo:
+- Ser capaz de tirar dúvidas técnicas relacionado a problemas de informática para o usuário final em um local de trabalho com arquitetura Cliente-Servidor;
+- Ser capaz de conversar com o usuário final sobre outros assuntos utilizando a linguagem mais natural e próxima do humano o possível.
+
+## Tecnologias incorporadas ao projeto:
+- AIML(Artificial Intelligence Markup Language);
+- Corpus;
+- Google Sheets;
+- Python 3.
 
 ## Instalação 
 ```
