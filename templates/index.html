@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 
@@ -73,11 +72,38 @@
         </div>
     </div>
 
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Usuário</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" id="nomeUsuario">
+                        </div>
+                        <button class="btn btn-dark" onclick="login()">Enviar</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
 
     <script>
 
         $(function () {
+            login()
             $(document).keypress(function (e) {
                 if (e.which == 13) {
                     enviarMensagem();
@@ -85,20 +111,34 @@
             });
         });
 
+        let nomeUsuario;
+
+        let login = function() {
+            nomeUsuario = $("#nomeUsuario").val()
+            if (nomeUsuario)
+                $(".modal").modal('hide')
+
+            else
+                $(".modal").modal('show')
+
+        }
+
         let comunicacao = function (mensagem) {
             return {
-            async: true,
-            url: "/ask",            
-            type: "POST",
-            dataType: "text",
-            success: function () { console.log("Comunicação OK."); },
-            error: function () { console.log("Erro na comunicação") },
-            data: {user: "leonardo", apikey: "432ref4824ijio4343233243243==",messageText: mensagem}
+                async: true,
+                url: "/ask",
+                type: "POST",
+                dataType: "text",
+                success: function () { console.log("Comunicação OK."); },
+                error: function () { console.log("Erro na comunicação") },
+                data: { user: nomeUsuario, apikey: "432ref4824ijio4343233243243==", messageText: mensagem }
             }
-        }         
+        }
 
         let adicionarMensagem = function (enviadaOuRecebida, mensagem) {
-            $(".container.container-mensagens").append('<div class="mensagem-caixa mensagem-' + enviadaOuRecebida + '">' + mensagem + '</div>')
+            let container = $(".container.container-mensagens")
+            container.append('<div class="mensagem-caixa mensagem-' + enviadaOuRecebida + '">' + mensagem + '</div>')
+            container.scrollTop(9999);
         }
 
         let adicionarMensagemEnviada = function (mensagem) {
@@ -112,6 +152,8 @@
         }
 
         let enviarMensagem = function () {
+            if (!nomeUsuario)
+                return login()
             let mensagem = $("#mensagem").val()
             if (mensagem) {
                 let request = comunicacao(mensagem)
