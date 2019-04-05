@@ -30,7 +30,7 @@ from sqlalchemy.orm import relationship, backref
 import datetime
 from sqlalchemy.orm import sessionmaker
  
-engine = create_engine('sqlite:///vars/chat.sqlite', echo=False)
+engine = create_engine('sqlite:///../include/chat.sqlite', echo=False)
 Base = declarative_base()
 
 class Perguntas(Base):

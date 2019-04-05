@@ -7,21 +7,25 @@ warnings.filterwarnings("ignore")
 import numpy as np
 import random
 import string
-
-language='portuguese'
-
-f=open('vars/chatbot.txt','r',errors = 'ignore')
-raw=f.read()
-raw=raw.lower()# converts to lowercase
 nltk.download('punkt')
 nltk.download('rslp')
 nltk.download('stopwords')
 
-sent_tokens = nltk.sent_tokenize(raw, language=language)
-word_tokens = nltk.word_tokenize(raw, language=language)
-#sent_tokens[:2]
-#word_tokens[:5]
+language='portuguese'
+sent_tokens=[]
+word_tokens=[]
 
+
+def load_corpus():
+    global sent_tokens, word_tokens
+    f=open('../include/chatbot.txt','r',errors = 'ignore')
+    raw=f.read()
+    raw=raw.lower()
+    sent_tokens = nltk.sent_tokenize(raw, language=language)
+    word_tokens = nltk.word_tokenize(raw, language=language)
+    return True
+
+load_corpus()
 
 def LemTokens(tokens):
     #lemmer = nltk.stem.WordNetLemmatizer()
@@ -39,7 +43,7 @@ def LemNormalize(text):
 
 
 def greeting(sentence):
-    GREETING_INPUTS = ("ola", "oi", "saudações", "sup", "tudo bem","hey")
+    GREETING_INPUTS = ("ola", "oi", "saudações", "sup", "tudo bem","hey","olá")
     GREETING_RESPONSES = [ "oi {{user}}, em que posso ajudar?"]
 
     for word in sentence.lower().split():
@@ -73,7 +77,6 @@ def parole(text):
     ret=""
     user_response = text
     user_response=user_response.lower()
-
     if(user_response!='tchau'):
         if(user_response=='obrigado'):
             ret = "ROBO: Voce é bem vindo.."
