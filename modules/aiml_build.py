@@ -41,4 +41,4 @@ def add_questions_default(listQuestion, listResponse):
     file.write(text)
     file.close()
         
-add_questions_default(sheet.read_col(1), sheet.read_col(2))
+add_questions_default(sheet.read_col(2), sheet.read_col(3))
