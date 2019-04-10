@@ -18,7 +18,7 @@ class Parole():
 		self.session.add(teste)
 		self.session.commit()
 		# termina 
-		return sre.sub('{{[^}}]+?}}', '', self.resposta)
+		return re.sub('{{[^}}]+?}}', '', self.resposta)
 
 
 
