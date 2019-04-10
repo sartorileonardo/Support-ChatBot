@@ -1,5 +1,6 @@
 
 import bot as corpus
+import re
 from models import *
 #session =Create_session()
 
@@ -17,7 +18,7 @@ class Parole():
 		self.session.add(teste)
 		self.session.commit()
 		# termina 
-		return self.resposta
+		return sre.sub('{{[^}}]+?}}', '', self.resposta)
 
 
 
