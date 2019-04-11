@@ -6,7 +6,7 @@ k = aiml.Kernel()
 
 # Use the 'learn' method to load the contents
 # of an AIML file into the Kernel.
-k.learn("std-startup.xml")
+k.learn("vars/std-startup.xml")
 
 # Use the 'respond' method to compute the response
 # to a user's input string.  respond() returns
