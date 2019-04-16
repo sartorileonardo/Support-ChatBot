@@ -9,7 +9,7 @@ from spreadsheets import spreadsheet
 sheet = spreadsheet()
 
 #def open_file():
-file = open("aiml_libraries/support.aiml", "w")
+file = open("../aiml_libraries/support.aiml", "w")
 
 def open_aiml_tag():
     return ("<?xml version = \"1.0\" encoding=\"UTF-8\"?>"+"\n<aiml version=\"1.0\" encoding=\"UTF-8\">\n")
