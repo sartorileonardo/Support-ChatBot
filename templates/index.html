@@ -113,10 +113,17 @@
 
         let nomeUsuario;
 
+        let hello = function(){
+            $("#mensagem").val('Oi')
+            enviarMensagem()
+        }
+
         let login = function() {
             nomeUsuario = $("#nomeUsuario").val()
-            if (nomeUsuario)
+            if (nomeUsuario){
                 $(".modal").modal('hide')
+                hello()
+            }
 
             else
                 $(".modal").modal('show')
