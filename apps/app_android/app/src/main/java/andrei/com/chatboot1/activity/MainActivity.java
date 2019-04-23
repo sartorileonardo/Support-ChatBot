@@ -1,13 +1,21 @@
 package andrei.com.chatboot1.activity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +43,33 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         campoMensagem = findViewById(R.id.campoMensagem);
 
+        TextInputLayout textInputLayout = new TextInputLayout(this);
+        final EditText input = new EditText(this);
+        //textInputLayout.setHint("Nome");
+        textInputLayout.addView(input);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Olá!");
+        builder.setMessage("Para melhorar nossa qualidade de resposta, você pode identificar-se inserindo seu nome");
+        builder.setView(textInputLayout);
+
+        builder.setPositiveButton("Quero me identificar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                String usuario = input.getText().toString();
+                Toast.makeText(getApplicationContext(), "Bem vindo " + usuario, Toast.LENGTH_LONG).show();
+            }});
+        builder.setNegativeButton("Não quero me identificar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+            }});
+        builder.show();
+
         setSupportActionBar(toolbar);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Atendimento atendimento = new HttpService(campoMensagem.getText().toString()).execute().get();
+                    String user = input.getText().toString();
+                    Atendimento atendimento = new HttpService(user != null ? user : "andrei", campoMensagem.getText().toString()).execute().get();
 
                     //Salva pergunta
                     Atendimento pergunta = new Atendimento();
