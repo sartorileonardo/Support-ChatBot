@@ -21,9 +21,11 @@ import andrei.com.chatboot1.model.Atendimento;
 public class HttpService extends AsyncTask<Void, Void, Atendimento> {
 
     private String pergunta;
+    private String usuario;
 
-    public HttpService(String pergunta) {
+    public HttpService(String usuario, String pergunta) {
         this.pergunta = pergunta;
+        this.usuario = usuario;
     }
 
     @Override
@@ -35,7 +37,7 @@ public class HttpService extends AsyncTask<Void, Void, Atendimento> {
             HttpPost httppost = new HttpPost("http://dc.shoto.com.br:8089/ask");
 
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            nameValuePairs.add(new BasicNameValuePair("user", "andrei"));
+            nameValuePairs.add(new BasicNameValuePair("user", usuario));
             nameValuePairs.add(new BasicNameValuePair("apikey", "432ref4824ijio4343233243243=="));
             nameValuePairs.add(new BasicNameValuePair("messageText", pergunta));
 
