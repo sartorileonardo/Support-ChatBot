@@ -23,7 +23,6 @@ class Parole():
 		teste = Perguntas(message,self.resposta,"teste",self.user)	
 		self.session.add(teste)
 		self.session.commit()
-		print(self.resposta)
 		# termina 
 		return re.sub('{{[^}}]+?}}', '', self.resposta)
 
