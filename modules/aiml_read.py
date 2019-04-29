@@ -13,7 +13,7 @@ class readAiml():
 
         # Use the 'learn' method to load the contents
         # of an AIML file into the Kernel.
-        self.k.learn("../vars/std-startup.xml")
+        self.k.learn("vars/std-startup.xml")
 
         # Use the 'respond' method to compute the response
         # to a user's input string.  respond() returns
@@ -26,4 +26,4 @@ class readAiml():
         # line and printing responses.
 
         # TODO: test with support.aiml, alter aiml repository and connect with flask web server 
-        print(self.k.respond(message))
+        return self.k.respond(message)

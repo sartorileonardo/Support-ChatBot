@@ -4,4 +4,7 @@
 from aiml_read import readAiml
 aiml = readAiml()
 
-aiml.response("COMPUTER")
+try:
+    print(type(aiml.response("COMPUTER")))
+except:
+    print('etst')
