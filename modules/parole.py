@@ -18,7 +18,7 @@ class Parole():
 		self.user=user.decode('utf-8')
 
 		self.resposta=self.aiml.response(message.decode('utf-8')).replace("{{user}}",self.user)
-		if self.resposta is '':
+		if 'No match found for input' in self.resposta:
 			self.resposta=corpus.parole(message).replace("{{user}}",self.user)
 		teste = Perguntas(message,self.resposta,"teste",self.user)	
 		self.session.add(teste)
