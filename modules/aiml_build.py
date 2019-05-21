@@ -12,7 +12,7 @@ from spreadsheets import spreadsheet
 sheet = spreadsheet()
 
 #def open_file():
-file = open("../aiml_libraries/support.aiml", "w")
+file = open("../aiml_libraries/Support.aiml", "w")
 
 def open_aiml_tag():
     return ("<?xml version = \"1.0\" encoding=\"UTF-8\"?>"+"\n<aiml version=\"1.0\" encoding=\"UTF-8\">\n")
@@ -21,16 +21,16 @@ def close_amil_tag():
     return "</aiml>"
 
 def write_pattern_tag(question_message):
-    return "<pattern>\n"+question_message+"\n"+"</pattern>\n"
+    return "<pattern>"+question_message+"</pattern>"
 
 def open_category_tag():
-    return "<category>\n"
+    return "<category>"
 
 def close_category_tag():
     return "</category>\n"
 
 def write_template_tag(responseMessage):
-    return "<template>\n"+responseMessage+"\n"+"</template>\n"
+    return "<template>"+responseMessage+"</template>"
 
 def add_questions_default(listQuestion, listResponse):
     text = ""
@@ -45,12 +45,13 @@ def add_questions_default(listQuestion, listResponse):
     file.write(text)
     file.close()
 
-add_questions_default(sheet.read_col(2), sheet.read_col(3))   
+def add():
+    add_questions_default(sheet.read_col(2), sheet.read_col(3))   
     
-schedule.every(1).minutes.do(add_questions_default)
+#schedule.every(1).minutes.do(add())
+schedule.every(1).minutes.do(add)
 
 while True:
     schedule.run_pending()
     time.sleep(1)
-        
 
