@@ -13,7 +13,8 @@ def run_aiml_build():
     print("I'm working...")  
     popen("python3 aiml_build.py")
 
-schedule.every(30).seconds.do(run_aiml_build)
+#schedule.every(30).seconds.do(run_aiml_build)
+schedule.every().day.at("12:00").do(run_aiml_build)
 
 while True:  
     schedule.run_pending()
