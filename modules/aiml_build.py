@@ -5,9 +5,6 @@
 #Autor: Leonardo Sartori
 #Contact: leonardogt4@hotmail.com
 
-import schedule
-import time
-
 from spreadsheets import spreadsheet
 sheet = spreadsheet()
 
@@ -45,13 +42,5 @@ def add_questions_default(listQuestion, listResponse):
     file.write(text)
     file.close()
 
-def add():
-    add_questions_default(sheet.read_col(2), sheet.read_col(3))   
+add_questions_default(sheet.read_col(2), sheet.read_col(3))   
     
-#schedule.every(1).minutes.do(add())
-schedule.every(1).minutes.do(add)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
-
