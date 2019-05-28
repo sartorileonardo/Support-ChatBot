@@ -3,6 +3,7 @@
 #Contact: fabiocax@gmail.com
 
 from flask import Flask, render_template, request, jsonify
+from os import popen 
 import os,sys
 sys.path.append('modules/')
 from parole import Parole
@@ -14,6 +15,10 @@ apikey=['432ref4824ijio4343233243243==']
 @app.route("/")
 def hello(name=None):
     return render_template('index.html',name=name)
+
+@app.route("/updateaimlfile")
+def run_aiml_build():  
+    popen("python3 aiml_build.py")
 
 @app.route("/ask", methods=['POST'])
 def ask():
