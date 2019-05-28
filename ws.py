@@ -20,6 +20,12 @@ def hello(name=None):
 def run_aiml_build():  
     popen("python3 aiml_build.py")
 
+@app.route("/updategit")
+def updategit():  
+    
+    popen("python3 aiml_build.py")
+    
+    
 @app.route("/ask", methods=['POST'])
 def ask():
     pkid = request.form['apikey'].encode('utf-8').strip() 
@@ -31,4 +37,5 @@ def ask():
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
 if __name__ == "__main__":
+    os.system('echo "'+os.getpid()+'" > pid.loc')
     app.run(host='0.0.0.0', port=8089, threaded=True)
