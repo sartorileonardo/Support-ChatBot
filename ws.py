@@ -37,5 +37,5 @@ def ask():
     else:
         return jsonify({'status':'ERR','user':user.decode('utf-8'),'answer':'Nao autorizado'}),401
 if __name__ == "__main__":
-    os.system('echo "'+os.getpid()+'" > pid.loc')
+    os.system('echo "'+str(os.getpid())+'" > pid.loc')
     app.run(host='0.0.0.0', port=8089, threaded=True)
