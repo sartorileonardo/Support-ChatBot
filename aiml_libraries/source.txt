@@ -1,0 +1,2 @@
+AIML libraries from resource:
+https://github.com/roltel/aiml-pt-pt-futuragora-venus/tree/master/aiml
