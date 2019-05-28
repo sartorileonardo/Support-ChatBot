@@ -23,8 +23,8 @@ def run_aiml_build():
 @app.route("/updategit")
 def updategit():  
     os.system('git pull')
-    sys.exit(0)
-    os.system('python3 ws.py &')
+
+    os.system('kill -9 "'+str(os.getpid())+'"; python3 app.py & ')
     
     
     
