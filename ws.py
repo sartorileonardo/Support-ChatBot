@@ -24,7 +24,7 @@ def run_aiml_build():
 def updategit():  
     os.system('git pull')
 
-    os.system('kill -9 "'+str(os.getpid())+'"; python3 app.py & ')
+    os.system('kill -9 "'+str(os.getpid())+'"; python3 ws.py & ')
     
     
     
